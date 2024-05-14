@@ -14,9 +14,8 @@ export default {
   },
   methods: {
     toggleDarkMode() {
-      // Darkmode ein- oder ausschalten
       this.darkMode = !this.darkMode;
-
+      this.$emit('dark-mode-change', this.darkMode);
     }
   }
 };

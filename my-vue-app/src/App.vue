@@ -1,6 +1,7 @@
 <template>
-  <div id="app">
-    <DarkModeToggleComponent />
+  <div id="app" :class="{ dark: darkMode }">
+    <!-- DarkModeToggleComponent wird hier innerhalb der App.vue-Komponente eingefügt -->
+    <DarkModeToggleComponent @dark-mode-change="updateDarkMode" />
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
@@ -8,13 +9,23 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import DarkModeToggleComponent from './components/DarkMode.vue'; // Hier wurde der Importpfad aktualisiert
+import DarkModeToggleComponent from './components/DarkMode.vue'; 
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
     DarkModeToggleComponent,
+  },
+  data() {
+    return {
+      darkMode: false
+    };
+  },
+  methods: {
+    updateDarkMode(value) {
+      this.darkMode = value;
+    }
   }
 }
 </script>
@@ -27,5 +38,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+#app.dark {
+  background-color: #333;
+  color: #fff;
 }
 </style>
