@@ -17,6 +17,20 @@ export default {
     HelloWorld,
     DarkModeToggleComponent,
   },
+  loadWiki(){
+    const baseUrl = process.env.VUE_APP_BACKEND_BASE_URL
+    const endpoint = baseUrl + '/articles'
+    const requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    }
+    fetch(endpoint, requestOptions)
+        .then(response => response.json())
+        .then(result => result.forEach(articles => {
+            this.items.push(articles)
+        }))
+        .catch(error => console.log('error', error))
+  },
   data() {
     return {
       darkMode: false
