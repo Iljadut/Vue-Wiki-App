@@ -2,7 +2,8 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
-      Leider befindet sich das Wiki noch in Bearbeitung. Bitte schauen Sie zu einem späteren Zeitpunkt wieder rein.
+      Leider befindet sich das Wiki noch in Bearbeitung. Bitte schauen Sie zu einem späteren Zeitpunkt wieder rein.<br>
+        check out the
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
     <h3>Installed CLI Plugins</h3>
