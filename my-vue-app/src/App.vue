@@ -1,21 +1,23 @@
 <template>
   <div id="app" :class="{ dark: darkMode }">
-    <!-- DarkModeToggleComponent wird hier innerhalb der App.vue-Komponente eingefügt -->
     <DarkModeToggleComponent @dark-mode-change="updateDarkMode" />
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ArticleList />
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import DarkModeToggleComponent from './components/DarkMode.vue'; 
+import ArticleList from './components/ArticleList.vue';
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
     DarkModeToggleComponent,
+    ArticleList,
   },
   data() {
     return {
