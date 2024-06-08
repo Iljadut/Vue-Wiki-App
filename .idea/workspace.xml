@@ -4,14 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ea3d342-0db6-454d-b0dd-39d5415a49ca" name="Changes" comment="commit für Backend mit Frontend verbinden">
-      <change beforePath="$PROJECT_DIR$/my-vue-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/my-vue-app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-vue-app/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/my-vue-app/src/App.vue" afterDir="false" />
+    <list default="true" id="8ea3d342-0db6-454d-b0dd-39d5415a49ca" name="Changes" comment="Einige Texte angepasst.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -28,6 +34,9 @@
     &quot;accountId&quot;: &quot;7c2db595-85e6-4a7f-9a29-7b9756dc6c37&quot;
   }
 }</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -39,10 +48,15 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/duten/Vue-Wiki-App",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "last_opened_file_path": "C:/Users/ugur1/Desktop/WebTech/Wiki_SoSe24",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager" selected="HTTP Request.generated-requests | #1">
@@ -107,6 +121,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1715508782527</updated>
+      <workItem from="1717856347214" duration="1420000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1716662402819</created>
@@ -124,6 +139,9 @@
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
