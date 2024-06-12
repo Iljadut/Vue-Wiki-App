@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <button @click="toggleDarkMode">Darkmode {{ darkMode ? 'ausschalten' : 'einschalten' }}</button>
