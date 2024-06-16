@@ -49,6 +49,10 @@
         </div>
       </section>
     </main>
+    <DarkModeToggleComponent @dark-mode-change="updateDarkMode" />
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Dein Wiki für alles!"/>
+    <ArticleList />
   </div>
 </template>
 
