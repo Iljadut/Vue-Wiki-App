@@ -3,7 +3,7 @@
     <header>
       <nav>
         <div class="logo">
-          <h1>AllwissendesWiki</h1>
+          <h1><span class="logo-bold">Allwissendes</span>Wiki</h1>
         </div>
         <div class="search-container">
           <input type="text" placeholder="was willst wissen?" class="search-bar">
@@ -12,6 +12,7 @@
           </button>
         </div>
         <div class="nav-buttons">
+          <div class="divider"></div>
           <button class="nav-button" @click="login">
             <img src="./assets/login.png" alt="Login" class="button-icon">
             <span>Anmelden</span>
@@ -49,10 +50,6 @@
         </div>
       </section>
     </main>
-    <DarkModeToggleComponent @dark-mode-change="updateDarkMode" />
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Dein Wiki für alles!"/>
-    <ArticleList />
   </div>
 </template>
 
@@ -119,6 +116,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 0; /* Remove bottom margin */
 }
 
 nav {
@@ -127,10 +125,19 @@ nav {
   width: 100%;
 }
 
+.logo {
+  margin-right: 20px;
+}
+
 .logo h1 {
   margin: 0;
   font-size: 24px;
   color: #fff;
+}
+
+.logo-bold {
+  color: #2c3e50;
+  font-weight: bold;
 }
 
 .search-container {
@@ -141,7 +148,7 @@ nav {
 }
 
 .search-bar {
-  flex-grow: 1;
+  width: 300px; /* Adjust width of the search bar */
   padding: 10px;
   font-size: 16px;
   border: none;
@@ -165,6 +172,13 @@ nav {
 .nav-buttons {
   display: flex;
   align-items: center;
+}
+
+.divider {
+  height: 30px;
+  width: 2px;
+  background-color: #fff;
+  margin: 0 10px;
 }
 
 .nav-button {
@@ -201,6 +215,7 @@ nav {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: 0; /* Remove top margin */
 }
 
 .hero-content {

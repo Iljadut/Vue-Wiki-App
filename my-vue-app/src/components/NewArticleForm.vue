@@ -14,7 +14,7 @@
         <label for="author">Autor</label>
         <input type="text" v-model="author" id="author" required />
       </div>
-      <button type="submit" class="btn">Artikel Veröffentlichen</button>
+      <button type="submit" class="btn">Artikel veröffentlichen</button>
     </form>
   </div>
 </template>
@@ -41,11 +41,17 @@ export default {
       axios.post('https://wiki-sose24.onrender.com/articles', newArticle)
         .then(response => {
           console.log("Artikel erfolgreich erstellt!", response.data);
-          this.$emit('article-created');
+          this.clearForm(); 
+          this.$emit('article-created'); 
         })
         .catch(error => {
           console.error("Fehler beim Erstellen des Artikels!", error);
         });
+    },
+    clearForm() {
+      this.title = '';
+      this.content = '';
+      this.author = '';
     }
   }
 }
