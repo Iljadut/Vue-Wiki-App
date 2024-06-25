@@ -31,8 +31,8 @@
         <div class="footer-links">
           <ul>
             <li><router-link to="/">Home</router-link></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><router-link to="/about">About</router-link></li>
+            <li><router-link to="/contact">Contact Us</router-link></li>
             <li><a href="#">Terms of Use</a></li>
             <li><a href="#">Privacy Policy</a></li>
           </ul>

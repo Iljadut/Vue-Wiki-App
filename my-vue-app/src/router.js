@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from './components/HomePage.vue';
 import ArticleListPage from './components/ArticleListPage.vue';
+import AboutPage from './components/AboutPage.vue'; 
+import ContactPage from './components/ContactPage.vue';
+import NewArticleForm from './components/NewArticleForm.vue';
 
 const routes = [
   {
@@ -12,6 +15,21 @@ const routes = [
     path: '/articles',
     name: 'articles',
     component: ArticleListPage
+  },
+  {
+    path: '/about', 
+    name: 'about',
+    component: AboutPage
+  },
+  {
+    path: '/contact', 
+    name: 'contact',
+    component: ContactPage
+  },
+  {
+    path: '/create-article', // Neue Route für Artikel erstellen
+    name: 'create-article',
+    component: NewArticleForm
   }
 ];
 

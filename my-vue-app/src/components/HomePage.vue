@@ -2,7 +2,7 @@
     <section class="hero">
       <div class="hero-content">
         <h1>Wilkommen zu dem Allwissenden Wiki, wo du alles finden kannst</h1>
-        <p>Such was du willst</p>
+        <p> Was wirst du heute herausfinden?</p>
         <div class="search-container">
           <input type="text" placeholder="Such was du willst" class="search-bar">
           <button class="search-button">
@@ -54,9 +54,9 @@
   }
   
   .search-bar {
-    width: 300px;
+    width: 600px;
     padding: 10px;
-    font-size: 16px;
+    font-size: 20px;
     border: none;
     border-radius: 5px 0 0 5px;
   }

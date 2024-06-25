@@ -33,11 +33,14 @@ export default {
   },
   methods: {
     submitForm() {
+      console.log("Submit Form Triggered");  // Log for debugging
       const newArticle = {
         title: this.title,
         content: this.content,
         author: this.author
       };
+      console.log("New Article Data:", newArticle);  // Log for debugging
+
       axios.post('https://wiki-sose24.onrender.com/articles', newArticle)
         .then(response => {
           console.log("Artikel erfolgreich erstellt!", response.data);
