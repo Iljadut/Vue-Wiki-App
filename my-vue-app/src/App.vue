@@ -6,17 +6,16 @@
           <h1><span class="logo-bold">Allwissendes</span>Wiki</h1>
         </div>
         <div class="search-container">
-          <input type="text" placeholder="was willst wissen?" class="search-bar">
+          <input type="text" placeholder="Was willst wissen?" class="search-bar">
           <button class="search-button">
             <img src="./assets/search.png" alt="Search" class="search-icon">
           </button>
         </div>
         <div class="nav-buttons">
-          <div class="divider"></div>
-          <button class="nav-button" @click="login">
-            <img src="./assets/login.png" alt="Login" class="button-icon">
-            <span>Anmelden</span>
+          <button class="dark-mode-toggle" @click="toggleDarkMode">
+            {{ darkMode ? 'Darkmode ausschalten' : 'Darkmode einschalten' }}
           </button>
+          <div class="divider"></div>
           <button class="nav-button" @click="randomArticle">
             <img src="./assets/randomise.png" alt="Random" class="button-icon">
             <span>Zufällig</span>
@@ -25,67 +24,57 @@
       </nav>
     </header>
     <main>
-      <section class="hero">
-        <div class="hero-content">
-          <h1>Wilkommen zu dem Allwissenden Wiki, wo du alles finden kannst</h1>
-          <p>Such was du willst</p>
-          <div class="search-container">
-            <input type="text" placeholder="Such was du willst" class="search-bar">
-            <button class="search-button">
-              <img src="./assets/search.png" alt="Search" class="search-icon">
-            </button>
-          </div>
-          <DarkModeToggleComponent @dark-mode-change="updateDarkMode" />
-        </div>
-        <img src="./assets/wiki3.png" alt="Wiki Illustration" class="hero-image">
-      </section>
-      <ArticleList ref="articleList" />
-      <section v-if="isLoggedIn">
-        <NewArticleForm @article-created="fetchArticles" />
-      </section>
-      <section v-else>
-        <div class="not-logged-in">
-          <h2>Um Artikel zu erstellen, müssen Sie sich anmelden</h2>
-          <button @click="login" class="login-button">Anmelden</button>
-        </div>
-      </section>
+      <router-view></router-view>
     </main>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-links">
+          <ul>
+            <li><router-link to="/">Home</router-link></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="newsletter-signup">
+          <h3>Allwissendes Wiki Newsletter</h3>
+          <p>Hilfreiche Anleitungen wöchentlich in deinem Posteingang!</p>
+          <input type="email" placeholder="E-Mail eingeben">
+          <button>Anmelden</button>
+          <p class="privacy-policy">Mit der Anmeldung erklärst du dich mit unserer Datenschutzrichtlinie einverstanden.</p>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
 <script>
-import ArticleList from './components/ArticleList.vue';
-import NewArticleForm from './components/NewArticleForm.vue';
-import DarkModeToggleComponent from './components/DarkMode.vue';
+import axios from 'axios';
 
 export default {
   name: 'App',
-  components: {
-    ArticleList,
-    NewArticleForm,
-    DarkModeToggleComponent,
-  },
   data() {
     return {
-      darkMode: false,
-      isLoggedIn: false, // Placeholder for user login status
+      darkMode: false
     };
   },
   methods: {
-    updateDarkMode(value) {
-      this.darkMode = value;
+    toggleDarkMode() {
+      this.darkMode = !this.darkMode;
     },
-    fetchArticles() {
-      this.$refs.articleList.fetchArticles();
-    },
-    login() {
-      // Placeholder function for login
-      // Implement your login logic here
-      this.isLoggedIn = true;
-    },
-    randomArticle() {
-      // Placeholder function for random article navigation
-      // Implement your random article logic here
+    async randomArticle() {
+      try {
+        const response = await axios.get('https://wiki-sose24.onrender.com/random-article');
+        const article = response.data;
+        if (article) {
+          alert(`Zufälliger Artikel: ${article.title}\nAutor: ${article.author}\nInhalt: ${article.content}`);
+        } else {
+          alert('Keine Artikel gefunden.');
+        }
+      } catch (error) {
+        console.error('Fehler beim Abrufen des zufälligen Artikels', error);
+      }
     }
   }
 }
@@ -116,7 +105,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0; /* Remove bottom margin */
+  margin-bottom: 0;
 }
 
 nav {
@@ -148,7 +137,7 @@ nav {
 }
 
 .search-bar {
-  width: 300px; /* Adjust width of the search bar */
+  width: 300px;
   padding: 10px;
   font-size: 16px;
   border: none;
@@ -181,7 +170,7 @@ nav {
   margin: 0 10px;
 }
 
-.nav-button {
+.nav-button, .dark-mode-toggle {
   background-color: transparent;
   color: #fff;
   border: none;
@@ -190,6 +179,10 @@ nav {
   align-items: center;
   padding: 10px;
   cursor: pointer;
+}
+
+.dark-mode-toggle {
+  margin-right: 10px;
 }
 
 .button-icon {
@@ -202,81 +195,82 @@ nav {
   font-size: 14px;
 }
 
-.nav-button:hover {
+.nav-button:hover, .dark-mode-toggle:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
 }
 
-.hero {
-  background-color: #292E49;
-  padding: 50px 20px;
+footer {
+  background-color: #536976;
+  padding: 20px 40px;
   color: #fff;
+}
+
+.footer-content {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 0; /* Remove top margin */
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.hero-content {
-  flex: 1;
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  margin-right: 40px;
 }
 
-.hero h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.hero p {
-  font-size: 24px;
+.footer-links ul li {
+  margin-bottom: 5px;
 }
 
-.hero-image {
-  flex: 1;
-  max-width: 100%;
-  height: auto;
-}
-
-main {
-  padding: 20px;
-}
-
-.hero button {
-  background-color: #fff;
-  color: #536976;
-  border: 2px solid #536976;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.hero button:hover {
-  background-color: #536976;
+.footer-links ul li a {
   color: #fff;
+  text-decoration: none;
 }
 
-.not-logged-in {
-  text-align: center;
-  padding: 50px;
+.footer-links ul li a:hover {
+  text-decoration: underline;
 }
 
-.not-logged-in h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
+.newsletter-signup {
+  text-align: left;
 }
 
-.login-button {
-  background-color: #536976;
+.newsletter-signup h3 {
+  margin-top: 0;
+}
+
+.newsletter-signup p {
+  margin: 5px 0;
+}
+
+.newsletter-signup input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: none;
+}
+
+.newsletter-signup button {
+  background-color: #f7b500;
   color: #fff;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
-  font-size: 16px;
   cursor: pointer;
 }
 
-.login-button:hover {
-  background-color: #435761;
+.newsletter-signup button:hover {
+  background-color: #d39e00;
+}
+
+.privacy-policy {
+  font-size: 12px;
 }
 </style>
