@@ -17,21 +17,22 @@ const routes = [
     component: ArticleListPage
   },
   {
-    path: '/about', 
+    path: '/about',
     name: 'about',
     component: AboutPage
   },
   {
-    path: '/contact', 
+    path: '/contact',
     name: 'contact',
     component: ContactPage
   },
   {
-    path: '/create-article', // Neue Route für Artikel erstellen
+    path: '/create-article',
     name: 'create-article',
     component: NewArticleForm
   }
 ];
+
 
 const router = createRouter({
   history: createWebHistory(),
