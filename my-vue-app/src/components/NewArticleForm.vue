@@ -33,19 +33,18 @@ export default {
   },
   methods: {
     submitForm() {
-      console.log("Submit Form Triggered");  // Log for debugging
       const newArticle = {
         title: this.title,
         content: this.content,
         author: this.author
       };
-      console.log("New Article Data:", newArticle);  // Log for debugging
 
       axios.post('https://wiki-sose24.onrender.com/articles', newArticle)
         .then(response => {
           console.log("Artikel erfolgreich erstellt!", response.data);
-          this.clearForm(); 
-          this.$emit('article-created'); 
+          this.clearForm(); // Formular leeren nach erfolgreichem Erstellen
+          this.fetchArticles(); // Schritt 1: Aktualisiere die Artikel nach dem Erstellen
+          this.$emit('article-created'); // Event emit, falls notwendig
         })
         .catch(error => {
           console.error("Fehler beim Erstellen des Artikels!", error);
@@ -55,9 +54,15 @@ export default {
       this.title = '';
       this.content = '';
       this.author = '';
+    },
+    fetchArticles() {
+      // Diese Methode sollte in einer übergeordneten Komponente implementiert werden,
+      // die die Liste der Artikel verwaltet und sie nach dem Erstellen eines neuen Artikels aktualisiert.
+      // Hier ein Beispiel für die Implementierung:
+      this.$emit('fetch-articles'); // Event emit, um übergeordnete Komponente zu informieren
     }
   }
-}
+};
 </script>
 
 <style scoped>

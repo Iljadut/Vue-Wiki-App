@@ -1,20 +1,25 @@
 <template>
   <div class="article-list-page">
     <h1>Alle Artikel</h1>
-    <button @click="createArticle" class="create-article-btn">Artikel erstellen</button>
+    <button @click="openCreateArticleModal" class="create-article-btn">Artikel erstellen</button>
     <ul class="article-list">
       <li v-for="article in articles" :key="article.id">
         <router-link :to="{ name: 'article', params: { id: article.id } }">{{ article.title }}</router-link>
       </li>
     </ul>
+    <ArticleCreateModal @article-created="handleArticleCreated" ref="createModal" />
   </div>
 </template>
 
 <script>
+import ArticleCreateModal from './ArticleCreateModal.vue'; // Passe den Pfad entsprechend an
 import axios from 'axios';
 
 export default {
   name: 'ArticleListPage',
+  components: {
+    ArticleCreateModal
+  },
   data() {
     return {
       articles: []
@@ -32,8 +37,11 @@ export default {
         console.error('Fehler beim Abrufen der Artikel:', error);
       }
     },
-    createArticle() {
-      this.$router.push({ name: 'create-article' });
+    handleArticleCreated() {
+      this.fetchArticles(); // Lade die Artikel erneut, um den neuen Artikel anzuzeigen
+    },
+    openCreateArticleModal() {
+      this.$refs.createModal.openModal(); // Öffne das Modal zur Artikel-Erstellung
     }
   }
 };
