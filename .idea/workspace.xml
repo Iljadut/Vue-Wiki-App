@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8ea3d342-0db6-454d-b0dd-39d5415a49ca" name="Changes" comment="Einige Texte angepasst.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-vue-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/my-vue-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-vue-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/my-vue-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,26 +56,42 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ugur1/Desktop/WebTech/Wiki_SoSe24",
+    "last_opened_file_path": "C:/Users/ugur1/Desktop/2. Semester/B2.1 Angewandte Programmierung/ha6-UgurFidan",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "C:/Users/ugur1/Desktop/WebTech/Vue-Wiki-App/my-vue-app/node_modules/jest",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="HTTP Request.generated-requests | #1">
+  <component name="RunManager" selected="Jest.NewArticleForm.vue.should not allow form submission if author field is empty">
     <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" requestIdentifier="#1" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/my-vue-app/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="build" />
-      </scripts>
+    <configuration name="NewArticleForm.vue" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/my-vue-app" />
       <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/my-vue-app/tests/unit/NewArticleForm.spec.js" />
+      <test-names>
+        <test-name value="NewArticleForm.vue" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="NewArticleForm.vue.should not allow form submission if author field is empty" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/my-vue-app/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/my-vue-app" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/my-vue-app/tests/unit/NewArticleForm.spec.js" />
+      <test-names>
+        <test-name value="NewArticleForm.vue" />
+        <test-name value="should not allow form submission if author field is empty" />
+      </test-names>
       <method v="2" />
     </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -93,23 +114,13 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/my-vue-app/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="serve" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.NewArticleForm.vue.should not allow form submission if author field is empty" />
+        <item itemvalue="Jest.NewArticleForm.vue" />
         <item itemvalue="HTTP Request.generated-requests | #1" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.lint" />
-        <item itemvalue="npm.build" />
-        <item itemvalue="npm.serve" />
       </list>
     </recent_temporary>
   </component>
@@ -122,6 +133,7 @@
       <option name="presentableId" value="Default" />
       <updated>1715508782527</updated>
       <workItem from="1717856347214" duration="1420000" />
+      <workItem from="1719401481054" duration="6915000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1716662402819</created>
