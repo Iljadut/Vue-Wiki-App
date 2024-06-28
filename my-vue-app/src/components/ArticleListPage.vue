@@ -3,11 +3,11 @@
     <h1>Alle Artikel</h1>
     <button @click="openCreateArticleModal" class="create-article-btn">Artikel erstellen</button>
     <ul class="article-grid">
-      <li v-for="article in articles" :key="article.title" class="article-item">
+      <li v-for="article in articles" :key="article.id" class="article-item">
         <h3>{{ article.title }}</h3>
         <p>{{ article.content }}</p>
         <p><em>{{ article.author }}</em></p>
-        <a href="#" class="read-more">Mehr lesen</a>
+        <router-link :to="`/articles/${article.id}`" class="read-more">Mehr lesen</router-link>
       </li>
     </ul>
     <ArticleCreateModal @article-created="handleArticleCreated" ref="createModal" />

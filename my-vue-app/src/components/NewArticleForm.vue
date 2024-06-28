@@ -14,6 +14,7 @@
         <label for="author">Autor</label>
         <input type="text" v-model="author" id="author" required />
       </div>
+      <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
       <button type="submit" class="btn">Artikel veröffentlichen</button>
     </form>
   </div>
@@ -28,38 +29,33 @@ export default {
     return {
       title: '',
       content: '',
-      author: ''
+      author: '',
+      errorMessage: ''
     };
   },
   methods: {
-    submitForm() {
+    async submitForm() {
       const newArticle = {
         title: this.title,
         content: this.content,
         author: this.author
       };
 
-      axios.post('https://wiki-sose24.onrender.com/articles', newArticle)
-        .then(response => {
-          console.log("Artikel erfolgreich erstellt!", response.data);
-          this.clearForm(); // Formular leeren nach erfolgreichem Erstellen
-          this.fetchArticles(); // Schritt 1: Aktualisiere die Artikel nach dem Erstellen
-          this.$emit('article-created'); // Event emit, falls notwendig
-        })
-        .catch(error => {
-          console.error("Fehler beim Erstellen des Artikels!", error);
-        });
+      try {
+        const response = await axios.post('https://wiki-sose24.onrender.com/articles', newArticle);
+        console.log("Artikel erfolgreich erstellt!", response.data);
+        this.clearForm(); 
+        this.$emit('article-created'); 
+      } catch (error) {
+        this.errorMessage = "Fehler beim Erstellen des Artikels!";
+        console.error(this.errorMessage, error);
+      }
     },
     clearForm() {
       this.title = '';
       this.content = '';
       this.author = '';
-    },
-    fetchArticles() {
-      // Diese Methode sollte in einer übergeordneten Komponente implementiert werden,
-      // die die Liste der Artikel verwaltet und sie nach dem Erstellen eines neuen Artikels aktualisiert.
-      // Hier ein Beispiel für die Implementierung:
-      this.$emit('fetch-articles'); // Event emit, um übergeordnete Komponente zu informieren
+      this.errorMessage = '';
     }
   }
 };

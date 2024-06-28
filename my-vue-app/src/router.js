@@ -4,6 +4,8 @@ import ArticleListPage from './components/ArticleListPage.vue';
 import AboutPage from './components/AboutPage.vue'; 
 import ContactPage from './components/ContactPage.vue';
 import NewArticleForm from './components/NewArticleForm.vue';
+import ArticleDetailPage from './components/ArticleDetailPage.vue'; // Neu
+
 
 const routes = [
   {
@@ -30,6 +32,11 @@ const routes = [
     path: '/create-article',
     name: 'create-article',
     component: NewArticleForm
+  },
+  { 
+    path: '/articles/:id', 
+    name: 'article-detail', 
+    component: ArticleDetailPage 
   }
 ];
 
