@@ -45,13 +45,18 @@ export default {
       }
     },
     async deleteArticle(articleId) {
-      try {
-        const response = await axios.delete(`https://wiki-sose24.onrender.com/articles/${articleId}`);
-        console.log(response.data); // Optional: Handle response if needed
-        this.fetchArticles(); // Refresh articles after deletion
-      } catch (error) {
-        console.error('Fehler beim Löschen des Artikels:', error);
-      }
+  try {
+    console.log('articleId:', articleId); // Überprüfen, ob articleId einen Wert hat
+    if (!articleId || isNaN(articleId)) {
+      console.error('Ungültige articleId:', articleId);
+      return;
+    }
+    const response = await axios.delete(`https://wiki-sose24.onrender.com/articles/${articleId}`);
+    console.log(response.data);
+    this.fetchArticles(); // Aktualisieren der Artikel nach dem Löschen
+  } catch (error) {
+    console.error('Fehler beim Löschen des Artikels:', error);
+  }
     },
     handleArticleCreated() {
       this.fetchArticles();
