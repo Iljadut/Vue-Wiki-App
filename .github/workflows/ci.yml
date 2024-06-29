@@ -20,10 +20,16 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd my-vue-app
+          npm install
 
       - name: Build project
-        run: npm run build
+        run: |
+          cd my-vue-app
+          npm run build
 
       - name: Run tests
-        run: npm test
+        run: |
+          cd my-vue-app
+          npm test
