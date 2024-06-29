@@ -11,6 +11,7 @@
           <button @click="toggleArticle(article)">Weniger lesen</button>
         </div>
         <button v-else @click="toggleArticle(article)">Mehr lesen</button>
+        <button @click="deleteArticle(article.id)">Artikel löschen</button>
       </li>
     </ul>
     <ArticleCreateModal @article-created="handleArticleCreated" ref="createModal" />
@@ -41,6 +42,15 @@ export default {
         this.articles = response.data.map(article => ({ ...article, expanded: false }));
       } catch (error) {
         console.error('Fehler beim Abrufen der Artikel:', error);
+      }
+    },
+    async deleteArticle(articleId) {
+      try {
+        const response = await axios.delete(`https://wiki-sose24.onrender.com/articles/${articleId}`);
+        console.log(response.data); // Optional: Handle response if needed
+        this.fetchArticles(); // Refresh articles after deletion
+      } catch (error) {
+        console.error('Fehler beim Löschen des Artikels:', error);
       }
     },
     handleArticleCreated() {
