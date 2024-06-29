@@ -1,3 +1,4 @@
+// NewArticleForm.vue
 <template>
   <div class="new-article-form">
     <h2>Neuen Artikel verfassen</h2>
@@ -14,7 +15,6 @@
         <label for="author">Autor</label>
         <input type="text" v-model="author" id="author" required />
       </div>
-      <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
       <button type="submit" class="btn">Artikel veröffentlichen</button>
     </form>
   </div>
@@ -29,37 +29,36 @@ export default {
     return {
       title: '',
       content: '',
-      author: '',
-      errorMessage: ''
+      author: ''
     };
   },
   methods: {
-    async submitForm() {
+    submitForm() {
       const newArticle = {
         title: this.title,
         content: this.content,
         author: this.author
       };
 
-      try {
-        const response = await axios.post('https://wiki-sose24.onrender.com/articles', newArticle);
-        console.log("Artikel erfolgreich erstellt!", response.data);
-        this.clearForm(); 
-        this.$emit('article-created'); 
-      } catch (error) {
-        this.errorMessage = "Fehler beim Erstellen des Artikels!";
-        console.error(this.errorMessage, error);
-      }
+      axios.post('https://wiki-sose24.onrender.com/articles', newArticle)
+        .then(response => {
+          console.log("Artikel erfolgreich erstellt!", response.data);
+          this.clearForm();
+          this.$emit('article-created');
+        })
+        .catch(error => {
+          console.error("Fehler beim Erstellen des Artikels!", error);
+        });
     },
     clearForm() {
       this.title = '';
       this.content = '';
       this.author = '';
-      this.errorMessage = '';
     }
   }
 };
 </script>
+
 
 <style scoped>
 .new-article-form {

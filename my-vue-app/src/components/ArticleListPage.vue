@@ -5,9 +5,12 @@
     <ul class="article-grid">
       <li v-for="article in articles" :key="article.id" class="article-item">
         <h3>{{ article.title }}</h3>
-        <p>{{ article.content }}</p>
         <p><em>{{ article.author }}</em></p>
-        <router-link :to="`/articles/${article.id}`" class="read-more">Mehr lesen</router-link>
+        <div v-if="article.expanded">
+          <p>{{ article.content }}</p>
+          <button @click="toggleArticle(article)">Weniger lesen</button>
+        </div>
+        <button v-else @click="toggleArticle(article)">Mehr lesen</button>
       </li>
     </ul>
     <ArticleCreateModal @article-created="handleArticleCreated" ref="createModal" />
@@ -15,7 +18,7 @@
 </template>
 
 <script>
-import ArticleCreateModal from './ArticleCreateModal.vue'; // Passe den Pfad entsprechend an
+import ArticleCreateModal from './ArticleCreateModal.vue';
 import axios from 'axios';
 
 export default {
@@ -35,16 +38,19 @@ export default {
     async fetchArticles() {
       try {
         const response = await axios.get('https://wiki-sose24.onrender.com/articles');
-        this.articles = response.data;
+        this.articles = response.data.map(article => ({ ...article, expanded: false }));
       } catch (error) {
         console.error('Fehler beim Abrufen der Artikel:', error);
       }
     },
     handleArticleCreated() {
-      this.fetchArticles(); // Lade die Artikel erneut, um den neuen Artikel anzuzeigen
+      this.fetchArticles();
+    },
+    toggleArticle(article) {
+      article.expanded = !article.expanded;
     },
     openCreateArticleModal() {
-      this.$refs.createModal.openModal(); // Öffne das Modal zur Artikel-Erstellung
+      this.$refs.createModal.openModal();
     }
   }
 };
@@ -52,50 +58,53 @@ export default {
 
 <style scoped>
 .article-list-page {
-  text-align: center;
-}
-
-.create-article-btn {
-  margin: 20px 0;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .article-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  list-style-type: none;
-  padding-left: 0; /* Entfernt das linke Padding des UL-Elements */
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  gap: 16px;
 }
 
 .article-item {
-  background-color: #fff;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  border-radius: 5px;
-  text-align: left;
+  flex: 1 1 calc(25% - 32px); /* Anpassung auf 25% */
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  padding: 16px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.article-item h3 {
-  margin-top: 0;
-  font-size: 18px;
+.create-article-btn {
+  margin-bottom: 16px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.article-item p {
-  margin: 10px 0;
+.create-article-btn:hover {
+  background-color: #0056b3;
 }
 
-.read-more {
-  display: block;
-  margin-top: 10px;
-  color: #3498db;
-  text-decoration: none;
+@media (max-width: 768px) {
+  .article-item {
+    flex: 1 1 calc(50% - 16px);
+  }
 }
 
-.read-more:hover {
-  text-decoration: underline;
+@media (max-width: 480px) {
+  .article-item {
+    flex: 1 1 100%;
+  }
 }
 </style>

@@ -1,9 +1,8 @@
 <template>
-    <div class="article-detail">
-      <h1>{{ article.title }}</h1>
-      <p>{{ article.content }}</p>
+    <div v-if="article">
+      <h2>{{ article.title }}</h2>
       <p><em>{{ article.author }}</em></p>
-      <button @click="goBack">Zurück</button>
+      <p>{{ article.content }}</p>
     </div>
   </template>
   
@@ -12,9 +11,10 @@
   
   export default {
     name: 'ArticleDetailPage',
+    props: ['id'],
     data() {
       return {
-        article: {}
+        article: null
       };
     },
     created() {
@@ -23,39 +23,13 @@
     methods: {
       async fetchArticle() {
         try {
-          const response = await axios.get(`https://wiki-sose24.onrender.com/articles/${this.$route.params.id}`);
+          const response = await axios.get(`https://wiki-sose24.onrender.com/articles/${this.id}`);
           this.article = response.data;
         } catch (error) {
           console.error('Fehler beim Abrufen des Artikels:', error);
         }
-      },
-      goBack() {
-        this.$router.push('/articles');
       }
     }
   };
   </script>
-  
-  <style scoped>
-  .article-detail {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .article-detail h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
-  }
-  
-  .article-detail p {
-    font-size: 1.2em;
-    line-height: 1.6;
-  }
-  
-  .article-detail button {
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  </style>
   

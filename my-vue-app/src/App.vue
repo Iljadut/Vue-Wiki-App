@@ -62,6 +62,7 @@ export default {
   methods: {
     toggleDarkMode() {
       this.darkMode = !this.darkMode;
+      document.body.classList.toggle('dark', this.darkMode);
     },
     async randomArticle() {
       try {
@@ -81,6 +82,19 @@ export default {
 </script>
 
 <style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+body.dark {
+  background-color: #333;
+  color: #fff;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;

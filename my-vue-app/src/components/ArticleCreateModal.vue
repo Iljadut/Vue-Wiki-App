@@ -1,3 +1,4 @@
+// ArticleCreateModal.vue
 <template>
   <div class="modal-overlay" v-if="showModal">
     <div class="modal">
@@ -9,7 +10,7 @@
 </template>
 
 <script>
-import NewArticleForm from './NewArticleForm.vue'; // Passe den Pfad entsprechend an
+import NewArticleForm from './NewArticleForm.vue';
 
 export default {
   name: 'ArticleCreateModal',
@@ -29,8 +30,8 @@ export default {
       this.showModal = false;
     },
     handleArticleCreated() {
-      this.closeModal(); // Schließe das Modal, nachdem der Artikel erstellt wurde
-      this.$emit('article-created'); // Sende das Ereignis an die übergeordnete Komponente
+      this.closeModal();
+      this.$emit('article-created');
     }
   }
 };
