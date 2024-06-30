@@ -19,7 +19,7 @@
           <button @click="toggleArticle(article)">Weniger lesen</button>
         </div>
         <button v-else @click="toggleArticle(article)">Mehr lesen</button>
-        <button @click="deleteArticle(article.id)">Artikel löschen</button>
+        <button @click="deleteArticle(article)">Artikel löschen</button>
         <button @click="toggleFavorite(article)">Favorisieren</button>
       </li>
     </ul>
@@ -72,13 +72,13 @@ export default {
         console.error('Fehler beim Abrufen der Artikel:', error);
       }
     },
-    async deleteArticle(articleId) {
+    async deleteArticle(article) {
       try {
-        if (!articleId) {
-          console.error('Ungültige articleId:', articleId);
+        if (!article) {
+          console.error('Ungültige articleId:', article);
           return;
         }
-        const response = await axios.delete(`https://wiki-sose24.onrender.com/articles/${articleId}`);
+        const response = await axios.delete(`https://wiki-sose24.onrender.com/articles/${article}`);
         console.log(response.data);
         await this.fetchArticles();
       } catch (error) {
