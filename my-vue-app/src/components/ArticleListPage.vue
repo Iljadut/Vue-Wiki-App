@@ -74,11 +74,12 @@ export default {
     },
     async deleteArticle(articleid) {
       try {
-        if (!article.id) {
+          const index = this.articles.findIndex(fav => fav.id === articleid);
+        if (!articleid) {
           console.error('Ungültige articleId:', articleid);
           return;
         }
-        const response = await axios.delete(`https://wiki-sose24.onrender.com/articles/${article}`);
+        const response = await axios.delete(`https://wiki-sose24.onrender.com/articles/${articleid}`);
         console.log(response.data);
         await this.fetchArticles();
       } catch (error) {
