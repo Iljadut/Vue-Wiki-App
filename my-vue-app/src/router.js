@@ -4,6 +4,7 @@ import ArticleListPage from './components/ArticleListPage.vue';
 import AboutPage from './components/AboutPage.vue'; 
 import ContactPage from './components/ContactPage.vue';
 import NewArticleForm from './components/NewArticleForm.vue';
+import FavoritesPage from './components/FavoritesPage.vue'; 
 
 
 const routes = [
@@ -26,6 +27,11 @@ const routes = [
     path: '/contact',
     name: 'contact',
     component: ContactPage
+  },
+  {
+    path: '/favorites', // Neue Route für Favoriten
+    name: 'Favorites',
+    component: FavoritesPage
   },
   {
     path: '/create-article',

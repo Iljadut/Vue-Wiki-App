@@ -1,5 +1,5 @@
 <template>
-  <div class="article-list-page" :class="{ dark: darkMode }">
+  <div class="article-list-page">
     <h1>Alle Artikel</h1>
     <div class="search-container">
       <input
@@ -20,6 +20,7 @@
         </div>
         <button v-else @click="toggleArticle(article)">Mehr lesen</button>
         <button @click="deleteArticle(article.id)">Artikel löschen</button>
+        <button @click="toggleFavorite(article)">Favorisieren</button> <!-- Neue Schaltfläche -->
       </li>
     </ul>
     <ArticleCreateModal @article-created="handleArticleCreated" ref="createModal" />
@@ -39,7 +40,7 @@ export default {
     return {
       articles: [],
       searchTerm: '',
-      darkMode: false // Initial Dark Mode Status
+      favorites: []
     };
   },
   created() {
@@ -49,6 +50,8 @@ export default {
       this.searchTerm = this.$route.query.search;
       this.searchArticles();
     }
+    // Laden der gespeicherten Favoriten aus dem Local Storage
+    this.loadFavorites();
   },
   computed: {
     filteredArticles() {
@@ -95,10 +98,29 @@ export default {
     },
     searchArticles() {
       // Nicht notwendig, da durch v-model und @input bereits live gefiltert wird
+    },
+    toggleFavorite(article) {
+      const index = this.favorites.findIndex(fav => fav.id === article.id);
+      if (index === -1) {
+        this.favorites.push(article);
+      } else {
+        this.favorites.splice(index, 1);
+      }
+      this.saveFavorites();
+    },
+    saveFavorites() {
+      localStorage.setItem('favorites', JSON.stringify(this.favorites));
+    },
+    loadFavorites() {
+      const savedFavorites = localStorage.getItem('favorites');
+      if (savedFavorites) {
+        this.favorites = JSON.parse(savedFavorites);
+      }
     }
   }
 };
 </script>
+
 
 <style scoped>
 .article-list-page {

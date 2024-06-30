@@ -20,6 +20,10 @@
             <img src="./assets/randomise.png" alt="Random" class="button-icon">
             <span>Zufällig</span>
           </button>
+          <button class="nav-button" @click="goToFavorites">
+            <img src="./assets/wiki3.png" alt="Favorites" class="button-icon">
+            <span>Favoriten</span>
+          </button>
         </div>
       </nav>
     </header>
@@ -94,6 +98,9 @@ export default {
       }
       // Navigiere zur Artikel-Seite und übergebe den Suchbegriff als Query-Parameter
       this.$router.push({ path: '/articles', query: { search: this.searchTerm.trim() } });
+    },
+    goToFavorites() {
+      this.$router.push({ path: '/favorites' });
     }
   }
 };
