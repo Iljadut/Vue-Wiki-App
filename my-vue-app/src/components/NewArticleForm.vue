@@ -1,6 +1,5 @@
-// NewArticleForm.vue
 <template>
-  <div class="new-article-form">
+  <div class="new-article-form" :class="{ dark: darkMode }">
     <h2>Neuen Artikel verfassen</h2>
     <form @submit.prevent="submitForm">
       <div class="form-group">
@@ -29,7 +28,8 @@ export default {
     return {
       title: '',
       content: '',
-      author: ''
+      author: '',
+      darkMode: false 
     };
   },
   methods: {
@@ -60,6 +60,7 @@ export default {
 </script>
 
 
+
 <style scoped>
 .new-article-form {
   max-width: 600px;
@@ -68,6 +69,12 @@ export default {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #333; /* Standard Textfarbe */
+}
+
+.dark .new-article-form {
+  background-color: #333; /* Dunkler Hintergrund im Dark Mode */
+  color: #fff; /* Weiße Schrift im Dark Mode */
 }
 
 .form-group {

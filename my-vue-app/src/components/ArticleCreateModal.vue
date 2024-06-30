@@ -58,6 +58,12 @@ export default {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   position: relative;
+  color: #333; 
+}
+
+.dark .modal {
+  background-color: #333; 
+  color: #fff; 
 }
 
 .close {

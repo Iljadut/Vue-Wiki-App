@@ -1,5 +1,5 @@
 <template>
-  <div class="article-list-page">
+  <div class="article-list-page" :class="{ dark: darkMode }">
     <h1>Alle Artikel</h1>
     <div class="search-container">
       <input
@@ -38,7 +38,8 @@ export default {
   data() {
     return {
       articles: [],
-      searchTerm: ''
+      searchTerm: '',
+      darkMode: false // Initial Dark Mode Status
     };
   },
   created() {
@@ -114,7 +115,7 @@ export default {
 }
 
 .article-item {
-  flex: 1 1 calc(25% - 32px); /* Anpassung auf 25% */
+  flex: 1 1 calc(25% - 32px);
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -122,6 +123,12 @@ export default {
   padding: 16px;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #333; /* Standardfarbe für Text */
+}
+
+.dark .article-item {
+  background-color: #333; /* Dunkler Hintergrund im Dark Mode */
+  color: #fff; /* Weiße Schrift im Dark Mode */
 }
 
 .create-article-btn {
