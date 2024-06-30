@@ -20,7 +20,7 @@
         </div>
         <button v-else @click="toggleArticle(article)">Mehr lesen</button>
         <button @click="deleteArticle(article.id)">Artikel löschen</button>
-        <button @click="toggleFavorite(article)">Favorisieren</button> <!-- Neue Schaltfläche -->
+        <button @click="toggleFavorite(article)">Favorisieren</button>
       </li>
     </ul>
     <ArticleCreateModal @article-created="handleArticleCreated" ref="createModal" />
@@ -45,12 +45,10 @@ export default {
   },
   created() {
     this.fetchArticles();
-    // Überprüfen, ob eine Suchanfrage von der Homepage kommt
     if (this.$route.query.search) {
       this.searchTerm = this.$route.query.search;
       this.searchArticles();
     }
-    // Laden der gespeicherten Favoriten aus dem Local Storage
     this.loadFavorites();
   },
   computed: {
@@ -82,7 +80,7 @@ export default {
         }
         const response = await axios.delete(`https://wiki-sose24.onrender.com/articles/${articleId}`);
         console.log(response.data);
-        this.fetchArticles(); // Aktualisieren der Artikel nach dem Löschen
+        await this.fetchArticles();
       } catch (error) {
         console.error('Fehler beim Löschen des Artikels:', error);
       }
@@ -97,7 +95,6 @@ export default {
       this.$refs.createModal.openModal();
     },
     searchArticles() {
-      // Nicht notwendig, da durch v-model und @input bereits live gefiltert wird
     },
     toggleFavorite(article) {
       const index = this.favorites.findIndex(fav => fav.id === article.id);
@@ -145,12 +142,12 @@ export default {
   padding: 16px;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  color: #333; /* Standardfarbe für Text */
+  color: #333;
 }
 
 .dark .article-item {
-  background-color: #333; /* Dunkler Hintergrund im Dark Mode */
-  color: #fff; /* Weiße Schrift im Dark Mode */
+  background-color: #333;
+  color: #fff;
 }
 
 .create-article-btn {

@@ -5,7 +5,6 @@
       <p>Was wirst du heute herausfinden?</p>
       <div class="search-container">
         <input type="text" v-model="searchTerm" @input="handleInput" placeholder="Suche nach Titel oder Inhalt" class="search-bar">
-        <!-- Button removed since search is triggered automatically -->
       </div>
       <router-link to="/articles" class="articles-button">Zu den Artikeln</router-link>
     </div>
@@ -30,13 +29,13 @@ export default {
       }
       searchTimeout = setTimeout(() => {
         this.searchArticles();
-      }, 500); // Verzögerung von 500ms vor der Suche
+      }, 500);
     },
     searchArticles() {
       if (this.searchTerm.trim() !== '') {
         this.$router.push({ path: '/articles', query: { search: this.searchTerm } });
       } else {
-        this.$router.push('/articles'); // Zurücksetzen der Suchabfrage, wenn das Suchfeld leer ist
+        this.$router.push('/articles');
       }
     }
   }

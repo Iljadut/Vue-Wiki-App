@@ -69,12 +69,12 @@ export default {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  color: #333; /* Standard Textfarbe */
+  color: #333;
 }
 
 .dark .new-article-form {
-  background-color: #333; /* Dunkler Hintergrund im Dark Mode */
-  color: #fff; /* Weiße Schrift im Dark Mode */
+  background-color: #333;
+  color: #fff;
 }
 
 .form-group {
@@ -98,7 +98,7 @@ export default {
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #536976; /* Neue Farbe */
+  background-color: #536976;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -106,6 +106,6 @@ export default {
 }
 
 .btn:hover {
-  background-color: #292E49; /* Neue Farbe */
+  background-color: #292E49;
 }
 </style>

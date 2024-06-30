@@ -89,14 +89,12 @@ export default {
       }
       this.searchTimeout = setTimeout(() => {
         this.searchArticles();
-      }, 500); // Verzögerung von 500ms vor der Suche
+      }, 500);
     },
     searchArticles() {
       if (!this.searchTerm.trim()) {
-        // Falls kein Suchbegriff vorhanden ist, nicht suchen
         return;
       }
-      // Navigiere zur Artikel-Seite und übergebe den Suchbegriff als Query-Parameter
       this.$router.push({ path: '/articles', query: { search: this.searchTerm.trim() } });
     },
     goToFavorites() {

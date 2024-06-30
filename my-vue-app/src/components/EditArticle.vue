@@ -32,8 +32,7 @@
       };
     },
     created() {
-      // Hier kannst du den Artikel laden, den du bearbeiten möchtest
-      const { id } = this.$route.params; // Annahme: Du hast die id des zu bearbeitenden Artikels aus der Route
+      const { id } = this.$route.params;
       fetch(`http://localhost:8080/articles/${id}`)
         .then(response => response.json())
         .then(article => {
@@ -45,7 +44,6 @@
     },
     methods: {
       submitForm() {
-        // Hier kannst du die PUT-Anfrage an dein Backend senden
         fetch(`http://localhost:8080/articles/${this.editedArticle.id}`, {
           method: 'PUT',
           headers: {
@@ -56,7 +54,6 @@
         .then(response => {
           if (response.ok) {
             alert('Artikel erfolgreich bearbeitet!');
-            // Hier könntest du zur Artikelliste oder zur Detailseite des bearbeiteten Artikels navigieren
           } else {
             alert('Fehler beim Bearbeiten des Artikels.');
           }

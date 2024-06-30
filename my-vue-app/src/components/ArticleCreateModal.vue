@@ -1,4 +1,3 @@
-// ArticleCreateModal.vue
 <template>
   <div class="modal-overlay" v-if="showModal">
     <div class="modal">

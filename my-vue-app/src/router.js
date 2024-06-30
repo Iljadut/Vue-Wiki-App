@@ -29,7 +29,7 @@ const routes = [
     component: ContactPage
   },
   {
-    path: '/favorites', // Neue Route für Favoriten
+    path: '/favorites',
     name: 'Favorites',
     component: FavoritesPage
   },
