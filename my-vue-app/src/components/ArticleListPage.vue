@@ -19,7 +19,7 @@
           <button @click="toggleArticle(article)">Weniger lesen</button>
         </div>
         <button v-else @click="toggleArticle(article)">Mehr lesen</button>
-        <button @click="deleteArticle(article)">Artikel löschen</button>
+        <button @click="deleteArticle(article.id)">Artikel löschen</button>
         <button @click="toggleFavorite(article)">Favorisieren</button>
       </li>
     </ul>
