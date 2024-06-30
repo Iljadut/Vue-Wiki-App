@@ -72,10 +72,10 @@ export default {
         console.error('Fehler beim Abrufen der Artikel:', error);
       }
     },
-    async deleteArticle(article) {
+    async deleteArticle(articleid) {
       try {
-        if (!article) {
-          console.error('Ungültige articleId:', article);
+        if (!article.id) {
+          console.error('Ungültige articleId:', articleid);
           return;
         }
         const response = await axios.delete(`https://wiki-sose24.onrender.com/articles/${article}`);
