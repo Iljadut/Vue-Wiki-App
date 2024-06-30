@@ -21,7 +21,7 @@
             <span>Zufällig</span>
           </button>
           <button class="nav-button" @click="goToFavorites">
-            <img src="./assets/wiki3.png" alt="Favorites" class="button-icon">
+            <img src="./assets/favorite.png" alt="Favorites" class="button-icon">
             <span>Favoriten</span>
           </button>
         </div>
