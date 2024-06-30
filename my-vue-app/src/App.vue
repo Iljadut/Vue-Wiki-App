@@ -6,8 +6,8 @@
           <h1><span class="logo-bold">Allwissendes</span>Wiki</h1>
         </div>
         <div class="search-container">
-          <input type="text" placeholder="Was willst wissen?" class="search-bar">
-          <button class="search-button">
+          <input type="text" v-model="searchTerm" @input="handleInput" placeholder="Was willst wissen?" class="search-bar">
+          <button @click="searchArticles" class="search-button">
             <img src="./assets/search.png" alt="Search" class="search-icon">
           </button>
         </div>
@@ -56,7 +56,9 @@ export default {
   name: 'App',
   data() {
     return {
-      darkMode: false
+      darkMode: false,
+      searchTerm: '',
+      searchTimeout: null
     };
   },
   methods: {
@@ -76,9 +78,25 @@ export default {
       } catch (error) {
         console.error('Fehler beim Abrufen des zufälligen Artikels', error);
       }
+    },
+    handleInput() {
+      if (this.searchTimeout) {
+        clearTimeout(this.searchTimeout);
+      }
+      this.searchTimeout = setTimeout(() => {
+        this.searchArticles();
+      }, 500); // Verzögerung von 500ms vor der Suche
+    },
+    searchArticles() {
+      if (!this.searchTerm.trim()) {
+        // Falls kein Suchbegriff vorhanden ist, nicht suchen
+        return;
+      }
+      // Navigiere zur Artikel-Seite und übergebe den Suchbegriff als Query-Parameter
+      this.$router.push({ path: '/articles', query: { search: this.searchTerm.trim() } });
     }
   }
-}
+};
 </script>
 
 <style>

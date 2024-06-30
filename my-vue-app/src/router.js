@@ -5,6 +5,7 @@ import AboutPage from './components/AboutPage.vue';
 import ContactPage from './components/ContactPage.vue';
 import NewArticleForm from './components/NewArticleForm.vue';
 
+
 const routes = [
   {
     path: '/',
